@@ -1,0 +1,21 @@
+
+1. spring initializr intellij Unsupported class file major version 64 
+[해결법]
+Gradle -> Gradle Settings -> Gradle JVM to 17
+
+
+2. hibernates dialect나 DB 관련 오류
+[해결법]
+spring.jpa.database=mysql 추가해줌
+url : https://velog.io/@gloom/Spring-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EC%97%B0%EB%8F%99-%EC%8B%9C-Access-to-DialectResolutionInfo-cannot-be-null-when-hibernate.dialect-not-set-%EC%98%A4%EB%A5%98
+
+
+3. jwt 토큰을 발행하는 함수를 추가 후 올바른 계정으로 post시 500 에러와
+'Internal Server Error' 오류가 뜨고 Servlet.service() for servlet [dispatcherServlet] 
+in context with path [] threw exception [Handler dispatch 
+failed: java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter] 
+with root cause
+오류 발생
+[해결법]
+java9 이상부터는 javax.xml.bind가 없기때문에 gradle 종속서 추가가 필요
+implementation 'javax.xml.bind:jaxb-api:2.3.1'
